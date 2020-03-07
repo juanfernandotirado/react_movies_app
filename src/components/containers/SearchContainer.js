@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import MoviesList from "../layout/MoviesList";
+import SearchList from "../layout/SearchList";
 import Loading from "../layout/Loading";
 import { getNowPlaying } from "../../services/apiMovies";
 
-class MoviesContainer extends Component {
+class SearchContainer extends Component {
   state = {
-    movies: [],
+    searchResults: [],
     isLoading: true
   };
 
@@ -17,17 +17,17 @@ class MoviesContainer extends Component {
       getNowPlaying().then(data => {
       this.setState({
         isLoading: false,
-        movies: data
+        searchResults: data
       });
     });
   }
 
   render() {
-    const { isLoading, movies } = this.state;
+    const { isLoading, searchResults } = this.state;
     return (
-      <div>{isLoading ? <Loading /> : <MoviesList movies={movies} />}</div>
+      <div>{isLoading ? <Loading /> : <SearchList searchResults={searchResults} />}</div>
     );
   }
 }
 
-export default MoviesContainer;
+export default SearchContainer;

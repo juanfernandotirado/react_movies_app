@@ -1,12 +1,19 @@
 import React from "react";
-import MovieCard from "./MovieCard";
+import ItemCard from "./ItemCard";
 
 const MoviesList = props => {
   return (
     <div className="container">
       {props.movies.map(movie => {
-        const { title, id } = movie;
-        return <MovieCard key={id} title={title} id={id} />;
+        const { title, id, poster_path, popularity, release_date, overview } = movie;
+        return <ItemCard key={id} 
+        title={title} 
+        id={id} 
+        poster_path={poster_path}
+        popularity={popularity}
+        release_date={release_date}
+        overview={overview}
+        />;
       })}
     </div>
   );
