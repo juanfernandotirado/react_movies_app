@@ -1,7 +1,7 @@
 import { APP_KEY, BASE_URL } from "../config/api_config";
 import axios from "axios";
 
-export const getNowPlaying = async () => {
-  const response = await axios.get(`${BASE_URL}/movie/now_playing?api_key=${APP_KEY}`);  
+export const getMovies = async (category) => {
+  const response = await axios.get(`${BASE_URL}/movie/${category}?api_key=${APP_KEY}`);  
   return response.data.results;
 };

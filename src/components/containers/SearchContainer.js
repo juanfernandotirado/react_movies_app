@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SearchList from "../layout/SearchList";
 import Loading from "../layout/Loading";
-import { getNowPlaying } from "../../services/apiMovies";
+import { getMovies } from "../../services/apiMovies";
 
 class SearchContainer extends Component {
   state = {
@@ -14,7 +14,7 @@ class SearchContainer extends Component {
       isLoading: true
     });
 
-      getNowPlaying().then(data => {
+      getMovies().then(data => {
       this.setState({
         isLoading: false,
         searchResults: data
