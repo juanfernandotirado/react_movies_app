@@ -1,12 +1,30 @@
 import React, { Component } from "react";
 import TVList from "../layout/TVList";
 import Loading from "../layout/Loading";
-import { getAiringToday } from "../../services/apiTV";
+import { getTVShows } from "../../services/apiTV";
+import TVSelect from "../selectors/TVSelect";
 
 class TVContainer extends Component {
   state = {
     shows: [],
-    isLoading: true
+    isLoading: true,
+    category: "airing_today"
+  };
+
+  handleChange = category => {
+    this.setState(
+      {category},
+      this.fetchTVShows
+    );
+  };
+
+  fetchTVShows = () => {
+    getTVShows(this.state.category).then(data => {
+      this.setState({
+        isLoading: false,
+        shows: data
+      });
+    });
   };
 
   componentDidMount() {
@@ -14,18 +32,22 @@ class TVContainer extends Component {
       isLoading: true
     });
 
-    getAiringToday().then(data => {
-      this.setState({
-        isLoading: false,
-        shows: data
-      });
-    });
+    this.fetchTVShows();
   }
 
   render() {
-    const { isLoading, shows } = this.state;
+    const { isLoading, shows, category } = this.state;
     return (
-      <div>{isLoading ? <Loading /> : <TVList shows={shows} />}</div>
+      <div>
+        <div>
+        <TVSelect
+            category={category}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>{isLoading ? <Loading /> : <TVList shows={shows} />}</div>
+      </div>
+      
     );
   }
 }
