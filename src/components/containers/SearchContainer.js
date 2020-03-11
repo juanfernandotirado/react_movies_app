@@ -1,31 +1,16 @@
 import React, { Component } from "react";
 import SearchList from "../layout/SearchList";
 import Loading from "../layout/Loading";
-import { getMovies } from "../../services/apiMovies";
 
 class SearchContainer extends Component {
-  state = {
-    searchResults: [],
-    isLoading: true
-  };
-
-  componentDidMount() {
-    this.setState({
-      isLoading: true
-    });
-
-      getMovies().then(data => {
-      this.setState({
-        isLoading: false,
-        searchResults: data
-      });
-    });
-  }
 
   render() {
-    const { isLoading, searchResults } = this.state;
+    const {searchResults} = this.props;
+    console.log('*** movies list: ', this.props.searchResults);
+
+    
     return (
-      <div>{isLoading ? <Loading /> : <SearchList searchResults={searchResults} />}</div>
+      <div>{searchResults.length == 0 ?  'Click Search': <SearchList searchResults={searchResults}/>}</div>
     );
   }
 }
