@@ -13,7 +13,7 @@ class MoviesContainer extends Component {
 
   handleChange = category => {
     this.setState(
-      category,
+      {category},
       this.fetchMovies
     );
   };
