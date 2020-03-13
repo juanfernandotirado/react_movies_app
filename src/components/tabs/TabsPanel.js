@@ -57,11 +57,13 @@ export default function TabsPanel(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color='default'>
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="simple tabs example"
+          variant='fullWidth'
+          indicatorColor='primary'
         >
           <Tab label="Movies" {...a11yProps(0)} />
           <Tab label="Search" {...a11yProps(1)} />

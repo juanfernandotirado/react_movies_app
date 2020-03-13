@@ -32,7 +32,7 @@ const Form = props => {
         variant='outlined'
       />
       <SearchSelect onCategoryChange={props.onCategoryChange} category={props.category}/>
-      <Button variant='outlined' className={classes.button} type='submit'>
+      <Button variant='contained' className={classes.button} type='submit' color='primary'>
         Search
       </Button>
     </form>
