@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function TabsPanel(props) {
+const TabsPanel = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -82,3 +82,5 @@ export default function TabsPanel(props) {
     </div>
   );
 }
+
+export default TabsPanel

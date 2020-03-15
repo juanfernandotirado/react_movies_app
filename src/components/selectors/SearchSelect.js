@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SearchSelect(props) {
+const SearchSelect = props => {
     const classes = useStyles();
 
     const inputLabel = React.useRef(null);
@@ -43,3 +43,5 @@ export default function SearchSelect(props) {
       </div>
     );
   }
+
+  export default SearchSelect

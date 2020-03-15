@@ -6,7 +6,9 @@ import { Box, Container, Grid, Typography } from "@material-ui/core";
 
 const getStyles = makeStyles({
   media: {
-    height: '280px'
+    height: '280px',
+    width:'100%',
+    maxWidth:'185px'
   },
   root:{
     marginTop:'2rem'
@@ -32,21 +34,43 @@ const ItemCard = props => {
   return (
     <Container>
       <Card key={id} className={classes.root}>
-        <Grid container direction="row" justify="flex-start" alignItems="center" spacing={2}>
+        <Grid 
+        container direction="row" 
+        justify="flex-start" 
+        alignItems="center" 
+        spacing={2}>
           <Grid item >
-            <img className={classes.media} src={imgPath} width='100%'/>
+            <img 
+            className={classes.media} 
+            src={imgPath}
+            />
           </Grid>
           <Grid item xs={10} >
             <Container>
-              <Typography gutterBottom variant='h5' component='h2'>
-                <Box textAlign='center'>{title || name}</Box>
-                </Typography>
-              <Typography gutterBottom variant='body2' color='textSecondary' component='p'>
-                <Box textAlign='center' marginBottom='2rem'>Release Date : {date} | Popularity: {popularity}</Box>
+              <Typography 
+              gutterBottom 
+              variant='h5' 
+              component='h2'>
+                <Box textAlign='center'>
+                  {title || name}
+                </Box>
               </Typography>
-              <Typography gutterBottom variant='body2' color='textSecondary' component='p'>
+              <Typography 
+              gutterBottom 
+              variant='body2' 
+              color='textSecondary' 
+              component='p'>
+                <Box textAlign='center' marginBottom='2rem'>
+                  Release Date : {date} | Popularity: {popularity}
+                </Box>
+              </Typography>
+              <Typography 
+              gutterBottom 
+              variant='body2' 
+              color='textSecondary' 
+              component='p'>
                 {overview}
-                </Typography>
+              </Typography>
             </Container>
           </Grid>
         </Grid>
@@ -56,33 +80,3 @@ const ItemCard = props => {
 }
 
 export default ItemCard
-
-
-// const ItemCard = props => {
-//   const { title, id, poster_path, popularity, release_date, overview, name, first_air_date } = props;
-
-//   let imgPath
-
-//   if(poster_path){
-//     imgPath = "http://image.tmdb.org/t/p/w185/" + poster_path
-//   }else{
-//     imgPath = 'https://images.pexels.com/photos/390089/film-movie-motion-picture-390089.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=278&w=185'
-//   }
-
-//   // let imgPath = "http://image.tmdb.org/t/p/w185/" + poster_path
-
-//   const date = release_date ? release_date : first_air_date
-
-//   return (<div className="container">
-//     <div>
-//       <img src = {imgPath} width='185' height='278'/>      
-//     </div>
-//     <div>
-//     <h3>{title || name}</h3>
-//     <p>Release Date : {date} | Popularity: {popularity}</p>
-//     </div>
-//     <p>{overview}</p>
-//     </div>);    
-// };
-
-// export default ItemCard;

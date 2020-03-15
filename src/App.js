@@ -3,19 +3,6 @@ import { getSearchResults } from './services/apiSearch'
 import Form from "./components/forms/Form";
 import TabsPanel from "./components/tabs/TabsPanel";
 import { Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles"
-
-// const styles = {
-//   root: {
-//     border:1,
-//     bacKGroundColor:'blue'
-//   },
-//   title: {
-//     border:1,
-//     borderColor:'black',
-//     color:'red'
-//   }
-// }
 
 class App extends Component {
   state = {
@@ -62,7 +49,7 @@ class App extends Component {
 
   render() {
     const { searchFlag, query, searchResults, category } = this.state;
-    // const classes = this.props.classes
+    
     return (
       <div style={{width:'90%', marginRight:'auto', marginLeft:'auto'}}>
         <Typography><h1 style={{ 
@@ -85,4 +72,4 @@ class App extends Component {
   }
 }
 
-export default /* withStyles(styles) */(App);
+export default App;

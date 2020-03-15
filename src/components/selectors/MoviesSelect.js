@@ -17,11 +17,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function MoviesSelect(props) {
   const classes = useStyles();
+
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
+  
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
+
   return (
     <div>
       <FormControl className={classes.formControl} variant='outlined'>
