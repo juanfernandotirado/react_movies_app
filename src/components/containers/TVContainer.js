@@ -38,7 +38,7 @@ class TVContainer extends Component {
   render() {
     const { isLoading, shows, category } = this.state;
     return (
-      <div>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
         <div>
         <TVSelect
             category={category}

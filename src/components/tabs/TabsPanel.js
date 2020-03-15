@@ -43,7 +43,7 @@ function a11yProps(index) {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   }
 }));
 
@@ -66,7 +66,7 @@ export default function TabsPanel(props) {
           indicatorColor='primary'
         >
           <Tab label="Movies" {...a11yProps(0)} />
-          <Tab label="Search" {...a11yProps(1)} />
+          <Tab label="Search Results" {...a11yProps(1)} />
           <Tab label="TV" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -74,7 +74,7 @@ export default function TabsPanel(props) {
         <MoviesContainer />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <SearchContainer searchResults={props.searchResults}/>
+        <SearchContainer searchResults={props.searchResults} query={props.query} searchFlag={props.searchFlag}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <TVContainer />

@@ -17,15 +17,23 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchSelect(props) {
     const classes = useStyles();
+
+    const inputLabel = React.useRef(null);
+    const [labelWidth, setLabelWidth] = React.useState(0);
+    React.useEffect(() => {
+      setLabelWidth(inputLabel.current.offsetWidth);
+    }, []);
+
     return (
       <div>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">Search Type</InputLabel>
+        <FormControl className={classes.formControl} variant='outlined'>
+          <InputLabel ref={inputLabel} id="demo-simple-select-label">Search Type</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={props.category}
             onChange={e => props.onCategoryChange(e.target.value)}
+            labelWidth={labelWidth}
           >
             <MenuItem value='multi'>Multi</MenuItem>
             <MenuItem value='movie'>Movies</MenuItem>

@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 import { getSearchResults } from './services/apiSearch'
 import Form from "./components/forms/Form";
-import Tabs from "./components/tabs/TabsPanel";
+import TabsPanel from "./components/tabs/TabsPanel";
+import { Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles"
+
+// const styles = {
+//   root: {
+//     border:1,
+//     bacKGroundColor:'blue'
+//   },
+//   title: {
+//     border:1,
+//     borderColor:'black',
+//     color:'red'
+//   }
+// }
 
 class App extends Component {
   state = {
     searchResults: [],
     isLoading: true,
-    category: 'movie',
-    query: 'superman'
+    category: 'multi',
+    query: '',
+    searchFlag: false
   };
 
   fetchSearch = e => {
@@ -21,6 +36,7 @@ class App extends Component {
     getSearchResults(category, query).then(data => {
       console.log("calling get search");
       this.setState({
+        searchFlag: true,
         searchResults: data,
         isLoading: false
       });
@@ -45,20 +61,28 @@ class App extends Component {
   };
 
   render() {
-    const { isLoading, searchResults, category } = this.state;
+    const { searchFlag, query, searchResults, category } = this.state;
+    // const classes = this.props.classes
     return (
-      <div>
-        <h1>React Movies App</h1>
+      <div style={{width:'90%', marginRight:'auto', marginLeft:'auto'}}>
+        <Typography><h1 style={{ 
+          textAlign:'center',
+          borderRadius:'7px', 
+          border:'3px solid black'}}>
+            React Movies App</h1>
+        </Typography>
         <Form
           onInputChange={this.handleInputChange}
           onCategoryChange={this.handleCategoryChange}
           onSubmit={this.fetchSearch}
           category={category}
         />
-        <Tabs searchResults={searchResults}/>
+        <div style={{border:'1px solid gray', marginTop:'4rem'}}>
+          <TabsPanel searchResults={searchResults} query={query} searchFlag={searchFlag} />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default /* withStyles(styles) */(App);

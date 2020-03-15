@@ -11,7 +11,10 @@ const getStyles = makeStyles(theme => ({
   form: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width:'50%', 
+    marginRight:'auto', 
+    marginLeft:'auto'
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -30,6 +33,7 @@ const Form = props => {
         name='query'
         onChange={e => props.onInputChange(e.target.value)}
         variant='outlined'
+        fullWidth
       />
       <SearchSelect onCategoryChange={props.onCategoryChange} category={props.category}/>
       <Button variant='contained' className={classes.button} type='submit' color='primary'>

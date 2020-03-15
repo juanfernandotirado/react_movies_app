@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import SearchList from "../layout/SearchList";
-import Loading from "../layout/Loading";
 
-class SearchContainer extends Component {
+const SearchContainer = props => {
 
-  render() {
-    const {searchResults} = this.props;
-    console.log('*** movies list: ', this.props.searchResults);
+  const {searchResults, query, searchFlag} = props;
 
-    
-    return (
-      <div>{searchResults.length == 0 ?  'Click Search': <SearchList searchResults={searchResults}/>}</div>
-    );
+  let message
+
+  if(!query && !searchFlag){
+    message = 'Please enter a search'
+  }else if(query && !searchFlag){
+    message = 'Please initiate a search'
+  } else if(query && searchResults.length == 0 && searchFlag){
+    message = 'Sorry there were no results'
   }
+
+  return (
+    <div>
+      {searchResults.length == 0 || !searchFlag ?  
+      <h2 style={{textAlign:'center'}}>{message}</h2> : <SearchList searchResults={searchResults}/>}
+    </div>
+  )
 }
 
-export default SearchContainer;
+export default SearchContainer

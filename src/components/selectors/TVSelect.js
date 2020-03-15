@@ -17,15 +17,21 @@ const useStyles = makeStyles(theme => ({
 
 export default function TVSelect(props) {
   const classes = useStyles();
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
   return (
     <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+      <FormControl className={classes.formControl} variant='outlined'>
+        <InputLabel ref={inputLabel} id="demo-simple-select-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={props.category}
           onChange={e => props.onChange(e.target.value)}
+          labelWidth={labelWidth}
         >
           <MenuItem value='airing_today'>Airing Today</MenuItem>
           <MenuItem value='on_the_air'>On the Air</MenuItem>

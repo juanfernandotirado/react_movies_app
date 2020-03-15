@@ -37,7 +37,7 @@ class MoviesContainer extends Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
         <div>
           <MoviesSelect
             category={this.state.category}

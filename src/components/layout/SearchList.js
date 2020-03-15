@@ -3,7 +3,7 @@ import ItemCard from "./ItemCard";
 
 const SearchList = props => {
   return (
-    <div className="container">
+    <div className="container">   
       {props.searchResults.map(result => {
         const { title, name, id, poster_path, popularity, release_date, first_air_date, overview } = result;
         return <ItemCard 
